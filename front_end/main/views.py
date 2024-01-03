@@ -55,8 +55,6 @@ def coaches(request):
 def _get_data_from_remote(uri, request):
     # '/teachers/'
     url = Config.BACK_END_HOST + uri
-    print("///////////")
-    print(url)
     arg = ''
     if request.GET:
         arg += '?'
