@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./front_end
+    image: hmtx_alpine_front_end:latest
+    ports:
+      - "8002:8002"
+    depends_on:
+        - backend
+    networks:
+      - my-network
+    links:
+      - backend:backend
+
+  backend:
+    container_name: backend
+    build:
+      context: ./back_end
+    image: hmtx_alpine_back_end:latest
+    ports:
+      - "8001:8001"
+    networks:
+      - my-network
+
+
+
+networks:
+  my-network:
+    driver: bridge
